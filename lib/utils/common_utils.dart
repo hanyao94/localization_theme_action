@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:localization_theme_action/redux/app_state.dart';
 import 'package:localization_theme_action/redux/locale_redux.dart';
+import 'package:localization_theme_action/redux/theme_redux.dart';
+import 'package:localization_theme_action/style/app_style.dart';
 
 /**
  * 通用方法
@@ -23,12 +25,15 @@ class CommonUtils {
     store.dispatch(RefreshLocaleAction(locale));
   }
 
+  /**
+   * 自定义弹出选择框
+   */
   static Future<Null> showCommitOptionDialog(
     BuildContext context,
     List<String> commitMaps,
     ValueChanged<int> onTap, {
     width = 250.0,
-    height = 400,
+    height = 400.0,
     List<Color> colorList,
   }) {
     return showDialog(
@@ -60,5 +65,30 @@ class CommonUtils {
             ),
           );
         });
+  }
+
+  /**
+   * 应用主题
+   */
+  static pushTheme(Store store, int index){
+    ThemeData themeData;
+    List<Color> colors = getThemeListColor();
+    themeData = new ThemeData(primarySwatch: colors[index]);
+    store.dispatch(RefreshThemeDataAction(themeData));
+  }
+
+  /**
+   * 主题颜色
+   */
+  static List<Color> getThemeListColor(){
+    return[
+      AppColors.primarySwatch,
+      Colors.lime,
+      Colors.amber,
+      Colors.deepOrange,
+      Colors.brown,
+      Colors.teal,
+      Colors.blue
+    ];
   }
 }

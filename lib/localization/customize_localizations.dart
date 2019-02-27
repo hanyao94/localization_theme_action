@@ -14,7 +14,7 @@ class CustomizeLocalizations {
 
   /// 国际化转化方法，基于map
   String i18n(String key) {
-    return _localizedValues[key] ?? '** $key not found';
+    return _localizedValues[key] ?? key;
   }
 
   /// 代理类 CustomizeLocalizationsDelegate load方法回调，
@@ -25,7 +25,6 @@ class CustomizeLocalizations {
     _localizedValues = json.decode(jsonContent);
     return customizeLocalizations;
   }
-
 
   /// 静态方法全局调用，根据Localizations 加载当前的 CustomizeLocalizations
   static CustomizeLocalizations of(BuildContext context) {

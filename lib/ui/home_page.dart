@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreBuilder<AppState>(builder: (context, store) {
       return Scaffold(
+        appBar: AppBar(title: Text('Home'),),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +36,24 @@ class HomePage extends StatelessWidget {
                     CommonUtils.changeLocale(store, index);
                   }, height: 150.0);
                 },
-              )
+              ),
+              RaisedButton(
+                child: Text(CustomizeLocalizations.of(context).i18n("选择主题")),
+                onPressed: () {
+                  List<String> list = [
+                    CustomizeLocalizations.of(context).i18n('默认主题'),
+                    CustomizeLocalizations.of(context).i18n('主题1'),
+                    CustomizeLocalizations.of(context).i18n('主题2'),
+                    CustomizeLocalizations.of(context).i18n('主题3'),
+                    CustomizeLocalizations.of(context).i18n('主题4'),
+                    CustomizeLocalizations.of(context).i18n('主题5'),
+                    CustomizeLocalizations.of(context).i18n('主题6'),
+                  ];
+                  CommonUtils.showCommitOptionDialog(context, list, (index) {
+                    CommonUtils.pushTheme(store, index);
+                  }, colorList: CommonUtils.getThemeListColor(),height: 350.0);
+                },
+              ),
             ],
           ),
         ),

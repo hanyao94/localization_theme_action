@@ -1,8 +1,18 @@
 {
   "Flutter 示例": "Flutter Demo",
   "选择日期": "chose date",
+
   "选择语言": "chose language",
   "默认": "Default",
   "中文": "Chinese",
-  "英文": "English"
+  "英文": "English",
+
+  "选择主题": "chose theme",
+  "默认主题": "Default",
+  "主题1": "theme1",
+  "主题2": "theme2",
+  "主题3": "theme3",
+  "主题4": "theme4",
+  "主题5": "theme5",
+  "主题6": "theme6"
 }

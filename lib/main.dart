@@ -6,6 +6,7 @@ import 'package:localization_theme_action/localization/customize_localizations_d
 import 'package:localization_theme_action/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:localization_theme_action/style/app_style.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   /// 创建Store，引用 GSYState 中的 AppState 实现 Reducer 方法
   /// initialState 初始化 State
   final store = Store<AppState>(appReducer,
-      initialState: AppState(themeData: ThemeData(primarySwatch: Colors.orange), locale: Locale('zh', 'CH')));
+      initialState: AppState(themeData: ThemeData(primarySwatch: AppColors.primarySwatch), locale: Locale('zh', 'CH')));
 
   @override
   Widget build(BuildContext context) {
