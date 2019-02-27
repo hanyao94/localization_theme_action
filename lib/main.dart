@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
         child: StoreBuilder<AppState>(builder: (context, store) {
           return MaterialApp(
             title: 'Flutter Demo',
-            theme: store.state.themeData,
-            locale: store.state.locale,
+            theme: store.state.themeData, /// <--- 通过store获取当前使用的主题
+            locale: store.state.locale,  /// <-- 通过store获取当前使用功能语言
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
                 return WelcomePage();
               },
               HomePage.sName: (context) {
+                ///Localizations.override()动态切换语言
                 return Localizations.override(context: context, locale: store.state.locale, child: HomePage());
               }
             },
